@@ -1,17 +1,55 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-title>
-      Tab 1
+      Conversor de Medidas Culinárias
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <form  [formGroup]="formulario" (ngSubmit)="mostrarResultado()">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label>Quantidade</ion-label>
+            <ion-input type="text"  formControlName="quantidade"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label>De</ion-label>
+            <ion-select (ionChange)="escondeCard()" formControlName="medida1" placeholder="Selecione">
+            <ion-select-option *ngFor="let medida of medidas" [value]="medida">{{medida.nome}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label>Para</ion-label>
+            <ion-select (ionChange)="escondeCard()" formControlName="medida2" placeholder="Selecione">
+              <ion-select-option>ml</ion-select-option>
+            <ion-select-option *ngFor="let medida of medidas" [value]="medida">{{medida.nome}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="center">
+        <ion-button (click)="mostrarResultado()" [disabled] = "!formulario.valid" color="danger">
+          <ion-icon slot="icon-only" size="large" name="repeat-outline"></ion-icon>
+        </ion-button>
+      </ion-row>
+    </ion-grid>
+  </form>
+  
+  <ion-card *ngIf="mostrarCard" color="dark">
+    <ion-card-header>
+      <ion-card-title>{{resultado}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  
 </ion-content>
