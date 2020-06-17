@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms' 
+import { AdMobFree } from '@ionic-native/admob-free/ngx';   
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms'
   providers: [
     StatusBar,
     SplashScreen,
+    AdMobFree,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

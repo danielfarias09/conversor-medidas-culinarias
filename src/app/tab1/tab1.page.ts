@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Medida } from '../model/medida';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
 
 
 @Component({
@@ -17,8 +18,9 @@ export class Tab1Page {
   public qtdML: number;
   public formulario: FormGroup;
 
-  constructor(public formBuilder: FormBuilder) {
+  constructor(public formBuilder: FormBuilder,private admobFree : AdMobFree ) {
     this.inicializar();
+    this.mostrarBannerAdmob();
   }
 
   private inicializar() {
@@ -74,5 +76,20 @@ export class Tab1Page {
       if(!this.mostrarCard) this.mostrarCard = true;
     }
   }
+
+  private mostrarBannerAdmob(){
+    const bannerConfig: AdMobFreeBannerConfig = {
+        id:'ca-app-pub-7173661742470104/5020689630',
+        autoShow: true
+    };
+    this.admobFree.banner.config(bannerConfig);
+
+    this.admobFree.banner.prepare()
+    .then(() => {
+        // banner Ad is ready
+        // if we set autoShow to false, then we will need to call the show method here
+    })
+    .catch(e => console.log(e));    
+    } 
 
 }
