@@ -1,5 +1,7 @@
 {
   "name": "conversor-medidas-culinarias-3",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

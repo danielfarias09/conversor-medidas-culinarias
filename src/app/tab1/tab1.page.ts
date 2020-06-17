@@ -4,6 +4,7 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
 
 
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -18,7 +19,9 @@ export class Tab1Page {
   public qtdML: number;
   public formulario: FormGroup;
 
-  constructor(public formBuilder: FormBuilder,private admobFree : AdMobFree ) {
+  constructor(public formBuilder: FormBuilder,private admobFree : AdMobFree ) {}
+
+  ngOnInit(){
     this.inicializar();
     this.mostrarBannerAdmob();
   }
@@ -78,7 +81,8 @@ export class Tab1Page {
   }
 
   private mostrarBannerAdmob(){
-    const bannerConfig: AdMobFreeBannerConfig = {
+    let bannerConfig: AdMobFreeBannerConfig = {
+        //isTesting: true,
         id:'ca-app-pub-7173661742470104/5020689630',
         autoShow: true
     };
