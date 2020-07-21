@@ -10,17 +10,14 @@
   <form  [formGroup]="formulario" (ngSubmit)="mostrarResultado()">
     <ion-grid>
       <ion-row>
-        <ion-col size="12">
-          <ion-item>
-            <ion-label>Quantidade</ion-label>
-            <ion-input type="text"  formControlName="quantidade" placeholder="Ex: 1/4"></ion-input>
-          </ion-item>
+        <ion-col class="img-center" size="12">
+          <ion-img src="../assets/icon/logo.webp"></ion-img>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="12">
           <ion-item>
-            <ion-label>Converter de</ion-label>
+            <ion-label position="floating">Converter de</ion-label>
             <ion-select (ionChange)="escondeCard()" formControlName="medida1" placeholder="Medida">
             <ion-select-option *ngFor="let medida of medidas" [value]="medida">{{medida.nome}}</ion-select-option>
           </ion-select>
@@ -30,7 +27,15 @@
       <ion-row>
         <ion-col size="12">
           <ion-item>
-            <ion-label>Para</ion-label>
+            <ion-label position="floating">Quantidade</ion-label>
+            <ion-input type="text"  formControlName="quantidade" placeholder="Ex: 1/4"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Para</ion-label>
             <ion-select (ionChange)="escondeCard()" formControlName="medida2" placeholder="Medida">
               <ion-select-option>ml</ion-select-option>
             <ion-select-option *ngFor="let medida of medidas" [value]="medida">{{medida.nome}}</ion-select-option>
@@ -39,17 +44,11 @@
         </ion-col>
       </ion-row>
       <ion-row class="center">
-        <ion-button (click)="mostrarResultado()" [disabled] = "!formulario.valid" color="danger">
+        <ion-button (click)="mostrarPopover()" [disabled] = "!formulario.valid" color="danger">
           <ion-icon slot="icon-only" size="large" name="repeat-outline"></ion-icon>
         </ion-button>
       </ion-row>
     </ion-grid>
   </form>
-  
-  <ion-card *ngIf="mostrarCard" color="dark">
-    <ion-card-header>
-      <ion-card-title>{{resultado}}</ion-card-title>
-    </ion-card-header>
-  </ion-card>
   
 </ion-content>

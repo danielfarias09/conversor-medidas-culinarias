@@ -6,6 +6,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { ReactiveFormsModule, FormsModule} from '@angular/forms' 
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
+import { PopovercomponentPageModule } from '../popovercomponent/popovercomponent.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
     ReactiveFormsModule, 
-    FormsModule
+    FormsModule,
+    PopovercomponentPageModule
   ],
   declarations: [Tab1Page]
 })

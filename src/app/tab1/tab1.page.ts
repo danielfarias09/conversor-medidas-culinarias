@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Medida } from '../model/medida';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
+import { PopoverController } from '@ionic/angular';  
+import { PopovercomponentPage } from '../popovercomponent/popovercomponent.page';
 
 
 
@@ -19,7 +21,8 @@ export class Tab1Page {
   public qtdML: number;
   public formulario: FormGroup;
 
-  constructor(public formBuilder: FormBuilder,private admobFree : AdMobFree ) {}
+  constructor(public formBuilder: FormBuilder,private admobFree : AdMobFree,
+    private popover:PopoverController ) {}
 
   ngOnInit(){
     this.inicializar();
@@ -72,11 +75,23 @@ export class Tab1Page {
   }
 
   mostrarResultado(){
-    //debugger
     let form:any = this.formulario.value;
     if(form.quantidade != null && form.medida1 != null && form.medida2 != null){
       this.resultado =  this.formataResultado(form);
       if(!this.mostrarCard) this.mostrarCard = true;
+    }
+  }
+
+  mostrarPopover(){
+    let form:any = this.formulario.value;
+    if(form.quantidade != null && form.medida1 != null && form.medida2 != null){
+      this.resultado =  this.formataResultado(form);
+      this.popover.create({
+        component:PopovercomponentPage,
+        componentProps:{resultado:this.resultado },
+       showBackdrop:false}).then((popoverElement)=>{
+         popoverElement.present();
+       })
     }
   }
 

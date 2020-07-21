@@ -4,6 +4,17 @@
   }
 
   .resultado {
-
     --color: #FF4500;
   }
+
+  .img-center {
+    display: flex;
+    justify-content: center;
+    text-align:center;
+  }
+
+  ion-img {
+    width: 70%;
+    height: 70%;;
+  }
+  
