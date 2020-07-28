@@ -5,8 +5,6 @@ import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
 import { PopoverController } from '@ionic/angular';  
 import { PopovercomponentPage } from '../popovercomponent/popovercomponent.page';
 
-
-
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -72,14 +70,6 @@ export class Tab1Page {
   private tratarFracao(fracao: any){
     fracao = fracao.split("/",2);
     return Number(fracao[0])/Number(fracao[1]);
-  }
-
-  mostrarResultado(){
-    let form:any = this.formulario.value;
-    if(form.quantidade != null && form.medida1 != null && form.medida2 != null){
-      this.resultado =  this.formataResultado(form);
-      if(!this.mostrarCard) this.mostrarCard = true;
-    }
   }
 
   mostrarPopover(){
